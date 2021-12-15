@@ -26,8 +26,9 @@ public class SecurityController {
     public String lunohod3() {
         return "My ROLE is DELETE";
     }
+
     @GetMapping("/authorize4")
-    @PreAuthorize("#username == authentication.principal.username")
+    @PreAuthorize("hasRole('ROLE_DELETE') or hasRole('ROLE_WRITE')")
     public String lunohod4(String username) {
         return "My ROLE is DELETE or WRITE. USERNAME хранится в SecurityContextHolder";
     }
